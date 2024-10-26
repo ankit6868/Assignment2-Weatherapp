@@ -40,8 +40,8 @@ A real-time weather monitoring application for major Indian metros. This system 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ankit6868/Assignt1-weatherapp.git
-   cd Assignt1-weatherapp
+   git clone https://github.com/ankit6868/Assignment2-Weatherapp.git
+   cd Assignment2-Weatherapp
 1. Clone the repository:
    ```bash
    npm i
