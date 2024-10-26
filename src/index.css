@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-blue-50 to-indigo-50;
+  }
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-lg relative overflow-hidden;
+}
+
+.weather-grid {
+  @apply grid gap-6;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.chart-container {
+  @apply relative overflow-hidden;
+  &::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-50;
+    animation: shimmer 2s infinite;
+  }
+}
+
+/* Weather Animations */
+.rain {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(transparent, #2563eb);
+  animation: rain-drop 1s linear infinite;
+}
+
+@keyframes rain-drop {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(300px);
+  }
+}
+
+.snow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: snow-fall 3s linear infinite;
+  filter: blur(1px);
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(300px) rotate(360deg);
+  }
+}
+
+.sun-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  background: #fde047;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.3;
+  animation: sun-pulse 2s ease-in-out infinite;
+}
+
+@keyframes sun-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.weather-icon-container {
+  @apply relative w-20 h-20 flex items-center justify-center;
+}
+
+.weather-icon-bg {
+  @apply absolute inset-0 rounded-full opacity-20;
+}
+
+.temp-badge {
+  @apply relative inline-flex items-end;
+  &::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    animation: shine 2s infinite;
+  }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.clouds {
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  background: white;
+  border-radius: 20px;
+  animation: float 4s ease-in-out infinite;
+  filter: blur(2px);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
